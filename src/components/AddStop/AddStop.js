@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { addStop } from '../../actions/index';
 
 class AddStop extends React.Component {
     constructor(props) {
@@ -22,6 +24,7 @@ class AddStop extends React.Component {
         e.preventDefault();
         
         if (this.isFormValid()) {
+            this.props.dispatch(addStop(this.state.name, this.state.address));
             this.setState({...this.resetState()});
         }
     };
@@ -34,7 +37,7 @@ class AddStop extends React.Component {
 
     render() {
         let { name, address } = this.state;
-
+        console.log(this.props)
         return(
             <form onSubmit={this.handleSubmit}>
                 <label>
@@ -57,4 +60,8 @@ class AddStop extends React.Component {
     }
 }
 
-export default AddStop;
+const mapStateToProps = (state) => ({
+    stops: state.stops
+})
+
+export default connect(mapStateToProps)(AddStop)
