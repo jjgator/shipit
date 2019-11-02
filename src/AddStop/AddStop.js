@@ -20,7 +20,16 @@ class AddStop extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.name, this.state.address);
+        
+        if (this.isFormValid()) {
+            this.setState({...this.resetState()});
+        }
+    };
+
+    isFormValid = () => {
+        return (!this.state.name || !this.state.address) 
+            ? alert("All fields are required. Please try again.")
+            : true
     };
 
     render() {
@@ -37,9 +46,10 @@ class AddStop extends React.Component {
                 </label>
                 <label>
                     Address:
-                    <input type="text" 
-                    value={address}
-                    onChange={e => this.handleChange('address', e.target.value)}/>
+                    <input 
+                        type="text" 
+                        value={address}
+                        onChange={e => this.handleChange('address', e.target.value)}/>
                 </label>
                 <input type="submit" value="Add Stop" />
             </form>
