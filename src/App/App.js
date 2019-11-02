@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
+import AddStop from '../AddStop/AddStop';
 
 const App = () => {
     return (
-        <header className="header">
-            <p>Ship It!</p>
-        </header>
+        <React.Fragment>
+            <header className="header">
+                <p>Ship It!</p>
+            </header>
+            <AddStop/>
+        </React.Fragment>
     );
 };
 
