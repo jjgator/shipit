@@ -1,8 +1,14 @@
 let nextStopId = 0;
 
-export const addStop = (name, address) => ({
+const addStop = (name, address) => ({
     type: 'ADD_STOP',
     id: nextStopId++,
     name,
     address
 });
+
+const validateAddress = (address) => dispatch => {
+
+};
+
+export { addStop };

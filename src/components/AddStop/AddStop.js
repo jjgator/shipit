@@ -24,7 +24,7 @@ class AddStop extends React.Component {
         e.preventDefault();
         
         if (this.isFormValid()) {
-            this.props.dispatch(addStop(this.state.name, this.state.address));
+            this.props.addStop(this.state.name, this.state.address);
             this.setState({...this.resetState()});
         }
     };
@@ -62,6 +62,9 @@ class AddStop extends React.Component {
 
 const mapStateToProps = (state) => ({
     stops: state.stops
-})
+});
 
-export default connect(mapStateToProps)(AddStop)
+export default connect(
+    mapStateToProps, 
+    { addStop }
+)(AddStop)

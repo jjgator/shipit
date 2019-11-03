@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import AddStop from '../AddStop/AddStop';
+import StopList from '../StopList/StopList';
 
 const App = () => {
     return (
@@ -9,6 +10,7 @@ const App = () => {
                 <p>Ship It!</p>
             </header>
             <AddStop/>
+            <StopList/>
         </React.Fragment>
     );
 };
