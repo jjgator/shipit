@@ -12,6 +12,10 @@ const stops = (state = [], action) => {
                     completed: action.completed
                 }
             ];
+        case 'TOGGLE_COMPLETED':
+            return state.map(stop => (
+                stop.id === action.id ? { ...stop, completed: !stop.completed } : stop
+            ));
         default:
             return state;
     }

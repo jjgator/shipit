@@ -7,11 +7,8 @@ const StopList = (props) => {
         <React.Fragment>
             <h3>Itinerary</h3>
             <ol>{props.stops.map(stop =>
-                <li>
-                    <Stop
-                        name={stop.name}
-                        address={stop.address}
-                        completed={stop.completed}/>
+                <li key={stop.id}>
+                    <Stop {...stop}/>
                 </li>
             )}</ol>
         </React.Fragment>

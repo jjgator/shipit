@@ -16,6 +16,11 @@ const addStop = (name, address) => async(dispatch) => {
     }
 };
 
+const toggleCompleted = (id) => ({
+    type: 'TOGGLE_COMPLETED',
+    id
+});
+
 const validateAddress = async(address) => {
     let url = "https://dev-api.shipwell.com/v2/locations/addresses/validate/";
     let data = { formatted_address: address };
@@ -29,4 +34,4 @@ const validateAddress = async(address) => {
     return await response.json();
 };
 
-export { addStop };
+export { addStop, toggleCompleted };
