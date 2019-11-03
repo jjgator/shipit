@@ -14,8 +14,12 @@ const stops = (state = [], action) => {
             ];
         case 'TOGGLE_COMPLETED':
             return state.map(stop => (
-                stop.id === action.id ? { ...stop, completed: !stop.completed } : stop
+                stop.id === action.id 
+                ? { ...stop, completed: !stop.completed } 
+                : stop
             ));
+        case 'REMOVE_STOP':
+            return state.filter(stop => stop.id !== action.id);
         default:
             return state;
     }
