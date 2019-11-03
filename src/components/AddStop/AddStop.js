@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { addStop } from '../../actions/stops';
+import { validateString, isNotEmptyString } from '../../helpers';
 
 class AddStop extends React.Component {
     constructor(props) {
@@ -30,14 +31,14 @@ class AddStop extends React.Component {
     };
 
     isFormValid = () => {
-        return (!this.state.name || !this.state.address) 
-            ? alert("All fields are required. Please try again.")
-            : true
+        let { name, address } = this.state;
+
+        return isNotEmptyString(name) && validateString(address) ? true : false;
     };
 
     render() {
         let { name, address } = this.state;
-        console.log(this.props)
+
         return(
             <form onSubmit={this.handleSubmit}>
                 <label>
@@ -60,11 +61,4 @@ class AddStop extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    stops: state.stops
-});
-
-export default connect(
-    mapStateToProps, 
-    { addStop }
-)(AddStop)
+export default connect(null, { addStop })(AddStop);
