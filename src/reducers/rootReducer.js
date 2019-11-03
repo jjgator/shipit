@@ -8,7 +8,8 @@ const stops = (state = [], action) => {
                 {
                     id: action.id,
                     name: action.name,
-                    address: action.address
+                    address: action.address,
+                    completed: action.completed
                 }
             ];
         default:

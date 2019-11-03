@@ -1,4 +1,4 @@
-let nextStopId = 0;
+let nextStopId = 0; // unique id for each stop
 
 const addStop = (name, address) => async(dispatch) => {
     try {
@@ -8,7 +8,8 @@ const addStop = (name, address) => async(dispatch) => {
             type: 'ADD_STOP',
             id: nextStopId++,
             name,
-            address: data.geocoded_address.formatted_address
+            address: data.geocoded_address.formatted_address,
+            completed: false
         });
     } catch (error) {
         alert("This address could not be validated. Please enter a valid address.")

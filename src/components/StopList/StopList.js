@@ -1,15 +1,19 @@
 import React from 'react';
 import { connect } from "react-redux";
+import Stop from '../Stop/Stop';
 
 const StopList = (props) => {
     return (
         <React.Fragment>
             <h3>Itinerary</h3>
-            <ul>{props.stops.map(stop =>
-                <li key={stop.id}>
-                    <p>{`${stop.name}: ${stop.address}`}</p>
+            <ol>{props.stops.map(stop =>
+                <li>
+                    <Stop
+                        name={stop.name}
+                        address={stop.address}
+                        completed={stop.completed}/>
                 </li>
-            )}</ul>
+            )}</ol>
         </React.Fragment>
     );
 };
