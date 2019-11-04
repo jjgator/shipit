@@ -1,4 +1,5 @@
 let nextStopId = 0; // unique id for each stop
+let invalidAddressAlertText = "This address could not be validated. Please enter a valid address.";
 
 const addStop = (name, address) => async(dispatch) => {
     try {
@@ -9,10 +10,11 @@ const addStop = (name, address) => async(dispatch) => {
             id: nextStopId++,
             name,
             address: data.geocoded_address.formatted_address,
-            completed: false
+            completed: false,
+            isValidating: false
         });
     } catch (error) {
-        alert("This address could not be validated. Please enter a valid address.")
+        alert(invalidAddressAlertText)
     }
 };
 
@@ -25,6 +27,29 @@ const removeStop = (id) => ({
     type: 'REMOVE_STOP',
     id
 });
+
+const editStop = (id, name, address) => async(dispatch) => {
+    dispatch(setValidatingState(id, true));
+    try {
+        let data = await validateAddress(address);
+
+        dispatch({
+            type: 'EDIT_STOP',
+            id,
+            name,
+            address: data.geocoded_address.formatted_address
+        });
+    } catch (error) {
+        dispatch(setValidatingState(id, false));
+        alert(invalidAddressAlertText)
+    }
+}
+
+const setValidatingState = (id, isValidating) => ({
+    type: 'SET_VALIDATING_STATE',
+    id,
+    isValidating
+})
 
 const validateAddress = async(address) => {
     let url = "https://dev-api.shipwell.com/v2/locations/addresses/validate/";
@@ -39,4 +64,4 @@ const validateAddress = async(address) => {
     return await response.json();
 };
 
-export { addStop, toggleCompleted, removeStop };
+export { addStop, toggleCompleted, removeStop, editStop };

@@ -26,7 +26,7 @@ class AddStop extends React.Component {
         
         if (this.isFormValid()) {
             this.props.addStop(this.state.name, this.state.address);
-            this.setState({...this.resetState()});
+            this.setState({ ...this.resetState() });
         }
     };
 
