@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { toggleCompleted, removeStop, editStop } from '../../actions/stops';
 import { validateString, isNotEmptyString } from '../../helpers';
+import './Stop.scss';
 
 class Stop extends React.Component {
     constructor(props) {
@@ -59,32 +60,43 @@ class Stop extends React.Component {
         } = this.props;
 
         return(
-            <div className="stop-wrapper">
+            <React.Fragment>
                 {isActive 
-                    ? <form onSubmit={this.handleSubmit}>
+                ? <form className="edit-stop-form" onSubmit={this.handleSubmit}>
+                    <input 
+                        type="text" 
+                        className="name-input"
+                        value={nameInputValue}
+                        onChange={
+                            e => this.handleChange('nameInputValue', e.target.value)
+                        }/>
+                    <input 
+                        type="text" 
+                        className="address-input"
+                        value={addressInputValue}
+                        onChange={
+                            e => this.handleChange('addressInputValue', e.target.value)
+                        }/>
+                    <button className="save-stop-button" type="submit">Save</button>
+                </form>
+                : <div>
+                    {isValidating 
+                    ? <div className="stop-wrapper">...validating</div>
+                    : <div className="stop-wrapper">
+                        <div className="stop-text" onClick={this.showForm}>
+                            <span className="stop-name">{name}</span>
+                            <span className="stop-address">{address}</span>
+                        </div>
                         <input 
-                            type="text" 
-                            value={nameInputValue}
-                            onChange={
-                                e => this.handleChange('nameInputValue', e.target.value)
-                            }/>
-                        <input 
-                            type="text" 
-                            value={addressInputValue}
-                            onChange={
-                                e => this.handleChange('addressInputValue', e.target.value)
-                            }/>
-                        <input type="submit" value="Save"/>
-                    </form>
-                    : <span onClick={this.showForm}>
-                        {isValidating ? '...validating' : `${name}: ${address}`}</span>}
-                <input 
-                    type="checkbox" 
-                    checked={completed}
-                    onChange={() => toggleCompleted(id)}>
-                </input>
-                <button onClick={() => removeStop(id)}>X</button>
-            </div>
+                            type="checkbox"
+                            className="stop-completed"
+                            checked={completed}
+                            onChange={() => toggleCompleted(id)}>
+                        </input>
+                        <button className="delete-stop-button" onClick={() => removeStop(id)}>Remove</button>
+                    </div>}
+                </div>}
+            </React.Fragment>
         );
     }
 }

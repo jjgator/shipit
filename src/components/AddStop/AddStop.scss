@@ -1,0 +1,52 @@
+.add-stop {
+    width: 40%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    
+    .add-stop-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .form-label {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        padding-right: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #4a4a4a;
+        
+        .form-input {
+            font-size: 14px;
+        }
+
+        .form-input:focus {
+            outline: none;
+        }
+    }
+
+    .add-stop-button {
+        width: 20%;
+        padding: 8px;
+        font-size: 16px;
+        color: white;
+        font-weight: bold;
+        border: 1px solid gray;
+        border-radius: 24px;
+        margin-left: 5px;
+        background: #6f8f78;
+        cursor: pointer;
+    }
+
+    .add-stop-button:focus {
+        outline: none;
+    }
+}
+
+

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { addStop } from '../../actions/stops';
 import { validateString, isNotEmptyString } from '../../helpers';
+import './AddStop.scss';
 
 class AddStop extends React.Component {
     constructor(props) {
@@ -40,23 +41,27 @@ class AddStop extends React.Component {
         let { name, address } = this.state;
 
         return(
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
-                    <input 
-                        type="text" 
-                        value={name} 
-                        onChange={e => this.handleChange('name', e.target.value)}/>
-                </label>
-                <label>
-                    Address:
-                    <input 
-                        type="text" 
-                        value={address}
-                        onChange={e => this.handleChange('address', e.target.value)}/>
-                </label>
-                <input type="submit" value="Add Stop" />
-            </form>
+            <div className="add-stop">
+                <form className="add-stop-form" onSubmit={this.handleSubmit}>
+                    <label className="form-label">
+                        Name:
+                        <input 
+                            type="text" 
+                            className="form-input"
+                            value={name} 
+                            onChange={e => this.handleChange('name', e.target.value)}/>
+                    </label>
+                    <label className="form-label">
+                        Address:
+                        <input 
+                            type="text" 
+                            className="form-input"
+                            value={address}
+                            onChange={e => this.handleChange('address', e.target.value)}/>
+                    </label>
+                    <button className="add-stop-button" type="submit">Add Stop</button>
+                </form>
+            </div>
         );
     }
 }

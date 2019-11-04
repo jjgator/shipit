@@ -1,0 +1,28 @@
+h3 {
+    margin-bottom: 0;
+}
+
+.stop-list {
+    width: 800px;
+
+    .list-label {
+        font-size: 12px;
+        font-weight: bold;
+        color: #4a4a4a;
+
+        &.name {
+            display: inline-block;
+            width: 150px;
+        }
+
+        &.address{
+            display: inline-block;
+            width: 500px;
+        }
+
+        &.completed{
+            display: inline-block;
+            width: 52px;
+        }
+    }
+}

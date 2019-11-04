@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import AddStop from '../AddStop/AddStop';
 import StopList from '../StopList/StopList';
 // import EditStopDialog from '../EditStopDialog/EditStopDialog';
@@ -8,10 +8,12 @@ const App = () => {
     return (
         <React.Fragment>
             <header className="header">
-                <p>Ship It!</p>
+                <p className="header-text">Ship It!</p>
             </header>
-            <AddStop/>
-            <StopList/>
+            <div className="main">
+                <AddStop/>
+                <StopList/>
+            </div>
         </React.Fragment>
     );
 };

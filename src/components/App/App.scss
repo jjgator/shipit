@@ -3,7 +3,17 @@
     min-height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     font-size: calc(10px + 2vmin);
+    font-weight: bold;
     color: white;
+
+    .header-text {
+        padding-left: 20px;
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
 }
