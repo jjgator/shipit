@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { addStop } from '../../actions/stops';
-import { validateString, isNotEmptyString } from '../../helpers';
+import { validateAddressField, validateNameField } from '../../helpers';
 import './AddStop.scss';
 
 class AddStop extends React.Component {
@@ -34,7 +34,7 @@ class AddStop extends React.Component {
     isFormValid = () => {
         let { name, address } = this.state;
 
-        return isNotEmptyString(name) && validateString(address) ? true : false;
+        return validateNameField(name) && validateAddressField(address) ? true : false;
     };
 
     render() {

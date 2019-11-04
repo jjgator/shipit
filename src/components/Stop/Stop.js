@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { toggleCompleted, removeStop, editStop } from '../../actions/stops';
-import { validateString, isNotEmptyString } from '../../helpers';
+import { validateAddressField, validateNameField } from '../../helpers';
 import './Stop.scss';
 
 class Stop extends React.Component {
@@ -44,7 +44,7 @@ class Stop extends React.Component {
         let name = this.state.nameInputValue;
         let address = this.state.addressInputValue;
 
-        return isNotEmptyString(name) && validateString(address) ? true : false;
+        return validateNameField(name) && validateAddressField(address) ? true : false;
     };
 
     render() {
