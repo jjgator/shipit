@@ -22,12 +22,16 @@ class AddStop extends React.Component {
         this.setState({[field]: value});
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = async(e) => {
         e.preventDefault();
         
         if (this.isFormValid()) {
-            this.props.addStop(this.state.name, this.state.address);
-            this.setState({ ...this.resetState() });
+            this.props.addStop(this.state.name, this.state.address)
+            .then(response => {
+                if (response) {
+                    this.setState({ ...this.resetState() })
+                }
+            })
         }
     };
 

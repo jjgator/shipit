@@ -13,6 +13,8 @@ const addStop = (name, address) => async(dispatch) => {
             completed: false,
             isValidating: false
         });
+
+        return data;
     } catch (error) {
         alert(invalidAddressAlertText)
     }
